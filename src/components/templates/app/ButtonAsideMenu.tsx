@@ -8,7 +8,7 @@ export default function ButtonAsideMenu(props:ButtonAside){
     return(
         <Link href={props.url}>
             <div className={`
-                w-full bg-white text-black p-3 border-solid border-1 border-black
+                w-full bg-[#124559] hover:bg-[#598392] text-white p-3 border-b-2 border-black hover:h-14
             `}>
                 <button>{props.name}</button>
             </div>
