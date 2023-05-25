@@ -1,4 +1,4 @@
-instalação - <br>
+<strong>instalação</strong> - <br>
 **instalação do next e react na ultima versão disponivel<br>
 npx create-next-app@latest fundamentos<br>
 	typescript - yes<br>
