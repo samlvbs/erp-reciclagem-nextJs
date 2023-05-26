@@ -6,8 +6,8 @@ export default function SideMenu(props:any){
             col-start-1 row-start-2 row-span-full bg-[#124559] text-white text-center
             
         `}>
-            <ButtonAsideMenu name="Compras" url="/"/>
-            <ButtonAsideMenu name="Vendas" url="/"/>
+            <ButtonAsideMenu name="Compras" url="compras"/>
+            <ButtonAsideMenu name="Vendas" url="vendas"/>
             <ButtonAsideMenu name="Estoque" url="/"/>
             <ButtonAsideMenu name="Saude financeira" url="/"/>
             <ButtonAsideMenu name="Cadastrar Produtos" url="/"/>
