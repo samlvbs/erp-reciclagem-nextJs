@@ -3,7 +3,7 @@ import ButtonAsideMenu from "./ButtonAsideMenu";
 export default function SideMenu(props:any){
     return(
         <div className={`
-            col-start-1 row-start-2 row-span-full bg-[#124559] text-white text-center
+            col-start-1 row-start-2 row-span-full bg-[#777777] text-white text-center
             
         `}>
             <ButtonAsideMenu name="Compras" url="compras"/>
