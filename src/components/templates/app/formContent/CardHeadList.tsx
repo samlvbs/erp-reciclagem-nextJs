@@ -2,7 +2,8 @@ export default function CardHeadList(prop:any){
     return(
         <div className={`
             flex flex-row justify-around items-center
-            w-full h-14 bg-slate-950 text-white
+            w-full h-14 bg-zinc-700 text-white
+
             rounded-t-xl
         `}>
             <div>Cliente</div>

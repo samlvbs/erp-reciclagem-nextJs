@@ -1,18 +1,43 @@
 import React, {useState} from "react";
-import InputForm from "./InputForm";
 
+interface Compra{
+    id:number;
+    cliente: string;
+    total:number;
+    material:string;
+    quantidade:number;
+    valorUnit:number;
+}
+export const arrayCompras:Compra[] = []
 const FormSuperior = () =>{
     //useState para set false ou true do modal
     const [showNewBuy, setShowNewBuy] = useState(false);
 
-    //Logica para pegar o value dos inputs
-    const[newBuy, setNewBuy] = useState([])
-    const[client, set] = useState("")
-    const[product, setProduct] = useState("")
-    const[qtd, setqtd] = useState("")
-    const[value, setValue] = useState("")
-    const[date, setDate] = useState("")
+    //Logica para pegar o total dos inputs
+    const[client, setCliente] = useState("")
+    const[id, setId] = useState(0)
+    const[total, setTotal] = useState(0)
+    const[material, setMaterial] = useState("")
+    const[quantidade, setQuantidade] = useState(0)
+    const[valorUnit, setValorUnit] = useState(0)
+    const[arrayCompras, setArrayCompras] = useState<Compra[]>([]);
 
+    function salvar(){
+        const newCompra: Compra ={
+            id: arrayCompras.length +1,
+            cliente: client,
+            total: valorUnit * quantidade,
+            material: material,
+            quantidade: quantidade,
+            valorUnit: valorUnit
+        } 
+        const newCompras = [...arrayCompras, newCompra];
+        setArrayCompras(newCompras);
+        setShowNewBuy(false)
+        console.log(arrayCompras)
+    }
+    
+   
     
 
     return(
@@ -28,17 +53,30 @@ const FormSuperior = () =>{
             {
                 // Se o botão add+ for clicado vai fazer showNewBuy virar true e abrir a div do modal
                 showNewBuy ? (
-                <div className={`relative mt-80`}>
+                <div className={`relative mt-60`}>
                     <div className={`
                     flex flex-col gap-6 items-center justify-center bg-zinc-200 rounded-lg
                     h-[400px] w-[400px] border-solid border-zinc-400 border-[1px]
                     `}>
+                        {/* Inputs para inserir os dados da nova compra */}
                         <h1 className="text-zinc-600 font-bold text-xl">Adicionar nova compra</h1>
-                        <InputForm contentLabel="Cliente" placeholder="Nome do Cliente" id="nameCliente" />
-                        <InputForm contentLabel="Material" placeholder="Nome do Material" id="nameCliente" />
-                        <InputForm contentLabel="Quantidade" placeholder="Kg ou Unidade" id="nameCliente" />
-                        <InputForm contentLabel="Valor unit." placeholder="Valor por unidade" id="nameCliente" />
-                        <InputForm contentLabel="Total" placeholder="Valor total" id="nameCliente" />
+                        <input className="text-black" type="text" placeholder="Nome do Cliente" onChange={(e) => setCliente(e.target.value)} />
+                        <select className="text-black w-44" placeholder="Nome do Material" onChange={(e) =>
+                             setMaterial(e.target.value)}>
+                                <option value="Material">Material</option>
+                                <option value="Ferro">Ferro</option>
+                                <option value="Plastico">Plastico</option>
+                                <option value="Papel">Papel</option>
+                                <option value="Latinha">Latinha</option>
+                             </select>
+                        <input className="text-black" type="text" placeholder="Quantidade" onChange={(e) =>
+                             setQuantidade(parseFloat(e.target.value))} />
+                        <input className="text-black" type="text" placeholder="Valor Unitario" onChange={(e) =>
+                             setValorUnit(parseFloat(e.target.value) )} />
+                        <input className="text-black" type="text" placeholder="Valor Total" onChange={(e) =>
+                             setTotal(parseFloat(e.target.value))} />
+
+                        {/* div de botões do modal, Fechar - Add+ - Concluir */}
                         <div className="flex gap-2">
                             <button onClick={()=>setShowNewBuy(false)} className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
@@ -48,23 +86,17 @@ const FormSuperior = () =>{
                             `}>Add +</button>
                             <button  className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
-                            `}>Concluir</button>
+                            `} onClick={salvar} >Concluir</button>
                         </div>
                         
                     </div>
                 </div>
                 ) 
                 : null
-            }
-            {/* <div className={`
-                text-black flex gap-2 items-center justify-center mr-20
-            `}>
-                <label>Pesquisar</label>
-                <input type="text" className="border-solid border-2 border-black h-8 rounded-md"/>
-            </div> */}
-            
+            }  
         </div>
     )
 }
 
 export default FormSuperior;
+
