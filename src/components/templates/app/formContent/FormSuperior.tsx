@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc} from "firebase/firestore";
+import { initializeApp } from "firebase/app";
 
 interface Compra{
     id:number;
@@ -9,18 +11,36 @@ interface Compra{
     valorUnit:number;
 }
 export const arrayCompras:Compra[] = []
+
+
 const FormSuperior = () =>{
     //useState para set false ou true do modal
     const [showNewBuy, setShowNewBuy] = useState(false);
 
     //Logica para pegar o total dos inputs
     const[client, setCliente] = useState("")
-    const[id, setId] = useState(0)
     const[total, setTotal] = useState(0)
     const[material, setMaterial] = useState("")
     const[quantidade, setQuantidade] = useState(0)
     const[valorUnit, setValorUnit] = useState(0)
     const[arrayCompras, setArrayCompras] = useState<Compra[]>([]);
+
+
+    const firebaseApp = initializeApp({
+        apiKey: "AIzaSyB7_GeXN6CyWrYq7vd9QOGC80iEXFCmS80",
+        authDomain: "erp-next-d27e5.firebaseapp.com",
+        projectId: "erp-next-d27e5",
+    })
+    const db = getFirestore(firebaseApp)
+    const comprasCollectionRef = collection(db, 'compras')
+
+    async function createCompra() {
+        const compra = await addDoc(comprasCollectionRef,{
+            client, material, quantidade, total, valorUnit 
+        })
+        setShowNewBuy(false)
+        console.log("Criou nova Compra")
+    }
 
     function salvar(){
         const newCompra: Compra ={
@@ -32,6 +52,7 @@ const FormSuperior = () =>{
             valorUnit: valorUnit
         } 
         const newCompras = [...arrayCompras, newCompra];
+        
         setArrayCompras(newCompras);
         setShowNewBuy(false)
         console.log(arrayCompras)
@@ -86,7 +107,7 @@ const FormSuperior = () =>{
                             `}>Add +</button>
                             <button  className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
-                            `} onClick={salvar} >Concluir</button>
+                            `} onClick={createCompra} >Concluir</button>
                         </div>
                         
                     </div>

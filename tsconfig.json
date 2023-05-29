@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/app/formContent/FormSuperior.tsx", "src/components/templates/app/formContent/CardList.tsx", "src/components/templates/app/formContent/CardHeadList.tsx", "src/components/templates/app/formContent/CardBuy.tsx", "src/components/templates/app/formContent/InputForm.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/app/formContent/FormSuperior.tsx", "src/components/templates/app/formContent/CardList.jsx", "src/components/templates/app/formContent/CardHeadList.tsx", "src/components/templates/app/formContent/CardBuy.tsx", "src/components/templates/app/formContent/InputForm.jsx"],
   "exclude": ["node_modules"]
 }
