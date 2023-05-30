@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc} from "firebase/firestore";
+import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, QueryEndAtConstraint} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
 interface Compra{
@@ -41,24 +41,8 @@ const FormSuperior = () =>{
         setShowNewBuy(false)
         console.log("Criou nova Compra")
     }
-
-    function salvar(){
-        const newCompra: Compra ={
-            id: arrayCompras.length +1,
-            cliente: client,
-            total: valorUnit * quantidade,
-            material: material,
-            quantidade: quantidade,
-            valorUnit: valorUnit
-        } 
-        const newCompras = [...arrayCompras, newCompra];
-        
-        setArrayCompras(newCompras);
-        setShowNewBuy(false)
-        console.log(arrayCompras)
-    }
-    
    
+   let totalBuy = (valorUnit * quantidade).toFixed(2);
     
 
     return(
@@ -81,8 +65,8 @@ const FormSuperior = () =>{
                     `}>
                         {/* Inputs para inserir os dados da nova compra */}
                         <h1 className="text-zinc-600 font-bold text-xl">Adicionar nova compra</h1>
-                        <input className="text-black" type="text" placeholder="Nome do Cliente" onChange={(e) => setCliente(e.target.value)} />
-                        <select className="text-black w-44" placeholder="Nome do Material" onChange={(e) =>
+                        <input className="text-black text-center" type="text" placeholder="Nome do Cliente" onChange={(e) => setCliente(e.target.value)} />
+                        <select className="text-black w-44 text-center" placeholder="Nome do Material" onChange={(e) =>
                              setMaterial(e.target.value)}>
                                 <option value="Material">Material</option>
                                 <option value="Ferro">Ferro</option>
@@ -90,12 +74,11 @@ const FormSuperior = () =>{
                                 <option value="Papel">Papel</option>
                                 <option value="Latinha">Latinha</option>
                              </select>
-                        <input className="text-black" type="text" placeholder="Quantidade" onChange={(e) =>
+                        <input className="text-black text-center" type="number" placeholder="Quantidade" onChange={(e) =>
                              setQuantidade(parseFloat(e.target.value))} />
-                        <input className="text-black" type="text" placeholder="Valor Unitario" onChange={(e) =>
+                        <input className="text-black text-center" type="number" placeholder="Valor Unitario" onChange={(e) =>
                              setValorUnit(parseFloat(e.target.value) )} />
-                        <input className="text-black" type="text" placeholder="Valor Total" onChange={(e) =>
-                             setTotal(parseFloat(e.target.value))} />
+                        <span className=" text-black text-center font-bold text-xl w-24 h-10 p-1 bg-white rounded-xl">R${totalBuy}</span>
 
                         {/* div de botões do modal, Fechar - Add+ - Concluir */}
                         <div className="flex gap-2">

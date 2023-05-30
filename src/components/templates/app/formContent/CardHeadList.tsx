@@ -10,7 +10,7 @@ export default function CardHeadList(prop:any){
             <div>Produtos</div>
             <div>Quantidade</div>
             <div>Valor</div>
-            <div>Horario</div>
+            <div>Deletar</div>
         </div>
     )
 }
