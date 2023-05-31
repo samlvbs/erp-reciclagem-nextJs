@@ -1,11 +1,7 @@
 import Link from "next/link"
 
-export interface NameButton{
-    name: string
-    url: string
-}
 
-export default function Button(props:NameButton){
+export default function Button(props){
     return(
         <Link href={props.url}>
             <div>

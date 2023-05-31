@@ -37,8 +37,8 @@ const CardList = ()=>{
 
     return(
         <div className={`
-            w-[90%] h-[90%] border-solid border-[1px] border-black mt-[-30px] rounded-xl
-            bg-white flex flex-col shadow-md overflow-y-scroll
+            w-[90%] h-[90%] border-solid border-[1px] border-black mt-[-30px] 
+            bg-white flex flex-col shadow-md overflow-y-scroll rounded-l-xl
         `}>
             <CardHeadList/>
             <div className="text-black">

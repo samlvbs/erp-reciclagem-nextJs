@@ -47,7 +47,8 @@ const FormSuperior = () =>{
 
     return(
         <div className={`
-            flex flex-col justify-center items-center bg-white w-full h-[20%]
+            flex flex-col justify-center items-center bg-white w-full h-[20%] rounded-2xl border-solid 
+            border-2 border-zinc-500
         `}>
             <div className="flex justify-start items-start m-6 ">
                 
@@ -73,7 +74,7 @@ const FormSuperior = () =>{
                 <div className={`relative mt-60`}>
                     <div className={`
                     flex flex-col gap-6 items-center justify-center bg-zinc-200 rounded-lg
-                    h-[400px] w-[400px] border-solid border-zinc-400 border-[1px]
+                    h-[400px] w-[290px] border-solid border-zinc-400 border-[1px]
                     `}>
                         {/* Inputs para inserir os dados da nova compra 
                             Quando os inputs são alterados é feito um set para a variavel
