@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 import CardHeadList from "./CardHeadList";
 import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, onSnapshot} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-
 import CardBuy from "./CardBuy";
-import { arrayCompras } from "./FormSuperior";
-import { get } from "http";
+
 const CardList = ()=>{
     
-    const[arrayList, setArrayList] = useState(arrayCompras)
-    const [shouldFetch, setShouldFetch] = useState(true);
+    const[arrayList, setArrayList] = useState([])
   
     const firebaseApp = initializeApp({
         apiKey: "AIzaSyB7_GeXN6CyWrYq7vd9QOGC80iEXFCmS80",
@@ -45,6 +42,7 @@ const CardList = ()=>{
         `}>
             <CardHeadList/>
             <div className="text-black">
+                {/* Percorre pelo array que contem os */}
                 {arrayList.map((buy)=>{
                     return(
                         <div key={buy.id} className="flex flex-row w-full h-12 mt-1  p-4 bg-zinc-300 p-1 rounded-xl " >
