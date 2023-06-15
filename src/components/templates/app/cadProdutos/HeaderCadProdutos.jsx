@@ -42,7 +42,7 @@ export default function HeaderCadProd(){
 
     
     return(
-        <div className="flex flex-col justify-center items-center h-24 w-full bg-zinc-400">
+        <div className="flex flex-col justify-center items-center h-24 w-full bg-zinc-400 ">
             <div className="flex justify-start items-start m-6 ">
                 <button 
                     className="bg-blue-500 hover:bg-blue-400 text-white p-2 rounded-lg font-bold"

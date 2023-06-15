@@ -16,7 +16,8 @@ export default function CadProdutos(){
                 <Content>
                     <ContentCadProdutos>
                         <HeaderCadProd/>
-                        <div className="flex justify-around h-10 w-full text-black p-2 bg-slate-200  mb-1 font-bold">
+                        <div className="flex justify-around h-10 w-full text-black p-2 bg-slate-200 
+                            rounded-t-xl mb-1 font-bold">
                             <span>Nome Produto</span>
                             <span>Medida (Kg, unid., Litro)</span>
                             <span>Valor Pago</span>
