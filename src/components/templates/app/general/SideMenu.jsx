@@ -11,7 +11,7 @@ export default function SideMenu(props){
             <ButtonAsideMenu name="Vendas" url="vendas"/>
             <ButtonAsideMenu name="Estoque" url="estoque"/>
             <ButtonAsideMenu name="Saude financeira" url="/"/>
-            <ButtonAsideMenu name="Cadastrar Produtos" url="/"/>
+            <ButtonAsideMenu name="Cadastrar Produtos" url="cadprodutos"/>
             <ButtonAsideMenu name="Cadastrar Comprador" url="/"/>
             <ButtonAsideMenu name="Cadastrar Fornecedor" url="/"/>
             <ButtonAsideMenu name="Lista de clientes" url="/"/>
