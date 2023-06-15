@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/app/formContent/FormSuperior.tsx", "src/components/templates/app/formContent/CardList.jsx", "src/components/templates/app/formContent/CardHeadList.tsx", "src/components/templates/app/formContent/CardBuy.tsx", "src/components/templates/app/formContent/InputForm.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/app/compras/formContent/FormSuperior.jsx", "src/components/templates/app/compras/formContent/CardList.jsx", "src/components/templates/app/compras/formContent/CardHeadList.tsx", "src/components/templates/app/compras/formContent/CardBuy.tsx", "src/components/templates/app/compras/formContent/InputForm.jsx", "src/components/Button.jsx", "src/components/templates/app/general/SideMenu.jsx", "src/components/templates/app/general/ButtonAsideMenu.jsx"],
   "exclude": ["node_modules"]
 }

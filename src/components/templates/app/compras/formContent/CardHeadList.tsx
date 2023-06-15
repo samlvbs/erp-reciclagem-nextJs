@@ -3,8 +3,8 @@ export default function CardHeadList(prop:any){
         <div className={`
             flex flex-row justify-around items-center
             w-full h-14 bg-zinc-700 text-white
-
-            rounded-t-xl
+            rounded-tl-xl
+           
         `}>
             <div>Cliente</div>
             <div>Produtos</div>

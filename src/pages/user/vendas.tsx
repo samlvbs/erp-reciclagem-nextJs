@@ -8,7 +8,6 @@ export default function Vendas(){
     return(
        <Container>
             <HighMenu>
-                <h1>menu superior</h1>
             </HighMenu>
             <SideMenu>
             </SideMenu>
