@@ -20,7 +20,7 @@ export default function ItemsCadProduto(props){
     }
     
     return(
-        <div className="flex justify-around items-center h-14 w-full text-black bg-zinc-200 border-solid border-[1px] border-zinc-300 rounded-lg font-bold">
+        <div className="flex justify-around items-center h-14 min-h-14 w-full text-black bg-zinc-200 border-solid border-[1px] border-zinc-300 rounded-lg font-bold">
         
             <div className="w-[22%] text-center">
                 {props.nome}

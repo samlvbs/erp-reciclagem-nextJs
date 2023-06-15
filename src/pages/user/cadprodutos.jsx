@@ -2,9 +2,9 @@ import Container from "@/components/templates/app/general/Container";
 import Content from "@/components/templates/app/general/Content";
 import HighMenu from "@/components/templates/app/general/HighMenu";
 import SideMenu from "@/components/templates/app/general/SideMenu";
-import ContentCadProdutos from "../../components/templates/app/cadCompras/ContentCadProdutos";
-import HeaderCadProd from "../../components/templates/app/cadCompras/HeaderCadCompras";
-import ListCadProdutos from "../../components/templates/app/cadCompras/ListCadProdutos";
+import ContentCadProdutos from "../../components/templates/app/cadProdutos/ContentCadProdutos";
+import HeaderCadProd from "../../components/templates/app/cadProdutos/HeaderCadProdutos";
+import ListCadProdutos from "../../components/templates/app/cadProdutos/ListCadProdutos";
 
 
 export default function CadProdutos(){

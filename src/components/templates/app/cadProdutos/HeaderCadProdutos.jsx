@@ -1,4 +1,4 @@
-import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, QueryEndAtConstraint} from "firebase/firestore";
+import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, updateDoc, setDoc} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { useState, useEffect } from "react"
 
@@ -9,8 +9,7 @@ export default function HeaderCadProd(){
     const [medida, setMedida] = useState("")
     const [valorPago, setValorPago] = useState(0)
     const [valorVenda, setValorVenda] = useState(0)
-
-    const[arrayList, setArrayList] = useState([])
+    const quantidade = 0;
   
     const firebaseApp = initializeApp({
         apiKey: "AIzaSyB7_GeXN6CyWrYq7vd9QOGC80iEXFCmS80",
@@ -19,6 +18,7 @@ export default function HeaderCadProd(){
     })
     const db = getFirestore(firebaseApp)
     const produtosCollectionRef = collection(db, 'produtos')
+    const estoqueCollectionRef = collection(db,'estoque')
 
     async function createProduto() {
         const compra = await addDoc(produtosCollectionRef,{
@@ -26,6 +26,18 @@ export default function HeaderCadProd(){
         })
         setShowAddProd(false)
         console.log("Criou nova Produto")
+    }
+
+    async function addProduto(){
+        const novoProdutoRef = doc(estoqueCollectionRef, produto);
+
+    await setDoc(novoProdutoRef, {
+        produto,
+        quantidade,
+        valorPago,
+        valorVenda,
+        lucro: quantidade * (valorVenda - valorPago)
+    });
     }
 
     
@@ -59,10 +71,10 @@ export default function HeaderCadProd(){
                                 <option value="liquido">Liquido</option>
                             </select>
                             <input className="text-black text-center" type="text" placeholder="Valor Pago"
-                                onChange={(e)=>{setValorPago(e.target.value)}}
+                                onChange={(e)=>{setValorPago(parseFloat(e.target.value))}}
                             />
                             <input className="text-black text-center" type="text" placeholder="Valor de Revenda"
-                                onChange={(e)=>{setValorVenda(e.target.value)}}
+                                onChange={(e)=>{setValorVenda(parseFloat(e.target.value))}}
                             />
                             <div className="flex gap-2">
                             <button onClick={()=>{
@@ -74,7 +86,7 @@ export default function HeaderCadProd(){
                             <button  className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
                             `}
-                                onClick={createProduto}
+                                onClick={()=>{createProduto(); addProduto({ produto, valorPago, valorVenda });}}
                             >
                                 Concluir
                             </button>

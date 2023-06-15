@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, onSnapshot} from "firebase/firestore";
+import React, {use, useEffect, useState} from "react";
+import { getDoc, getFirestore, collection, addDoc, doc, deleteDoc, onSnapshot, updateDoc} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
 
@@ -29,6 +29,7 @@ const FormSuperior = () =>{
     const[material, setMaterial] = useState("")
     const[quantidade, setQuantidade] = useState(0)
     const[valorUnit, setValorUnit] = useState(0)
+    const[produto, setProduto] = useState("")
 
     const firebaseApp = initializeApp({
         apiKey: "AIzaSyB7_GeXN6CyWrYq7vd9QOGC80iEXFCmS80",
@@ -38,6 +39,7 @@ const FormSuperior = () =>{
     const db = getFirestore(firebaseApp)
     const comprasCollectionRef = collection(db, 'compras')
     const produtosCollectionRef = collection(db, 'produtos')
+    const estoqueCollectionRef = collection(db, 'estoque')
 
     // Quando essa função é chamada são inseridos através de addDoc os valores
     //'client, material, quantidade, total, valorUnit' no banco de dad0s, na coleção 'compras' 
@@ -58,6 +60,24 @@ const FormSuperior = () =>{
         let totalBuy = (quantidade*valorUnit).toFixed(2)
         setTotal(parseFloat(totalBuy))
     },[quantidade, valorUnit])
+
+    useEffect(()=>{
+        let newProduto = material
+        setProduto(newProduto)
+    },[material] )
+
+    async function addQuantidade(){
+        const produtoRef = doc(estoqueCollectionRef, material)
+        const produtoSnapshot = await getDoc(produtoRef)
+        const produtoData = produtoSnapshot.data()
+
+        const quantidadeAtual = produtoData.quantidade || 0
+        const novaQuantidade = quantidadeAtual + quantidade
+        
+        await updateDoc(produtoRef, {
+            quantidade: novaQuantidade
+        })
+    }   
   
     
 
@@ -128,7 +148,7 @@ const FormSuperior = () =>{
                             `}>Add +</button>
                             <button  className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
-                            `} onClick={createCompra} >Concluir</button>
+                            `} onClick={()=>{createCompra();addQuantidade()}} >Concluir</button>
                         </div>
                         
                     </div>
