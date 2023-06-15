@@ -79,6 +79,10 @@ const FormSuperior = () =>{
         })
     }   
   
+    function showList(){
+        console.log("Lista de Produtos", listProd)
+    }
+
     
 
     return(
@@ -118,7 +122,14 @@ const FormSuperior = () =>{
                         */}
                         <h1 className="text-zinc-600 font-bold text-xl">Adicionar nova compra</h1>
                         <input className="text-black text-center" type="text" placeholder="Nome do Cliente" onChange={(e) => setCliente(e.target.value)} />
-                        <select className="text-black w-44 text-center" placeholder="Nome do Material" onChange={(e) => setMaterial(e.target.value)}>
+                        <select className="text-black w-44 text-center" placeholder="Nome do Material" onChange={(e) => {
+                            const selectedProduct = listProd.find((prod) => prod.produto === e.target.value);
+                            if (selectedProduct) {
+                            setMaterial(e.target.value);
+                            setValorUnit(selectedProduct.valorPago);
+                            }
+                        }}>
+                            <option value="">Selecione um material</option>
                             {listProd.map((prod) => {
                             return <option key={prod.id} value={prod.produto}>{prod.produto}</option>;
                             })}
@@ -127,7 +138,7 @@ const FormSuperior = () =>{
                             setQuantidade(parseFloat(e.target.value))
                             
                         }}/>
-                        <input className="text-black text-center" type="number" placeholder="Valor Unitario" onChange={(e) =>{
+                        <input className="text-black text-center" type="number" placeholder="Valor Unitario" value={valorUnit} onChange={(e) =>{
                             setValorUnit(parseFloat(e.target.value))
                           
                         }} />
@@ -147,7 +158,7 @@ const FormSuperior = () =>{
                             `}>Add +</button>
                             <button  className={`
                                 bg-blue-500 hover:bg-blue-400 rounded-xl text-white font-bold p-2
-                            `} onClick={()=>{createCompra();addQuantidade()}} >Concluir</button>
+                            `} onClick={()=>{createCompra();addQuantidade();showList()}} >Concluir</button>
                         </div>
                         
                     </div>

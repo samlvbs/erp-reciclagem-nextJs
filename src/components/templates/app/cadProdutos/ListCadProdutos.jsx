@@ -30,7 +30,7 @@ export default function ListCadProdutos(props){
     
     
     return(
-        <div className="flex flex-col gap-2 p-2 h-full w-full rounded-b-lg overflow-y-scroll">
+        <div className="flex flex-col gap-2 p-2 h-full w-full rounded-lg overflow-y-scroll">
            {
             arrayList.map((prod)=>{
                 return(
