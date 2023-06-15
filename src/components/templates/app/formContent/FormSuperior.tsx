@@ -97,8 +97,7 @@ const FormSuperior = () =>{
                             setValorUnit(parseFloat(e.target.value))
                           
                         }} />
-                        <input className="text-black text-center" type="number" placeholder="Valor Total" value={total}
-                        />
+                        <input className="text-black text-center" type="number" placeholder="Valor Total" value={total}/>
                         
 
                         {/* div de botões do modal, Fechar - Add+ - Concluir */}
