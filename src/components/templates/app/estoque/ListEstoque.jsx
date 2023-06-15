@@ -21,6 +21,7 @@ export default function ListEstoque(props){
           const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
           setListProd(data);
         });
+
         console.log("Pegou estoque!!!!!!!")
         return () => {
           unsubscribe();
