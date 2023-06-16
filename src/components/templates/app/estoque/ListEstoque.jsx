@@ -34,12 +34,14 @@ export default function ListEstoque(props){
         <div className="flex flex-col gap-2 w-full h-full bg-white rounded-b-xl p-2 overflow-y-scroll">
             {
             listProd.map((prod)=>{
-
+                let formatValorPago = (prod.valorPago*prod.quantidade).toFixed(2)
+                let formatValorVenda = (prod.valorVenda*prod.quantidade).toFixed(2)
+                let formatLucro = (prod.quantidade*(prod.valorVenda-prod.valorPago)).toFixed(2)
                 return(
                     <ItemEstoque key={prod.id} nome={prod.produto} quantidade={prod.quantidade}
-                    valorPago={`R$${prod.valorPago*prod.quantidade}`} 
-                    valorVenda={`R$${prod.valorVenda*prod.quantidade}`} 
-                    lucro={`R$${prod.quantidade*(prod.valorVenda-prod.valorPago)}`} 
+                    valorPago={`R$${formatValorPago}`} 
+                    valorVenda={`R$${formatValorVenda}`} 
+                    lucro={`R$${formatLucro}`} 
                     />
                 )
             })

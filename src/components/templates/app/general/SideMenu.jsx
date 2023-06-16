@@ -10,12 +10,12 @@ export default function SideMenu(props){
             <ButtonAsideMenu name="Compras" url="compras"></ButtonAsideMenu>
             <ButtonAsideMenu name="Vendas" url="vendas"/>
             <ButtonAsideMenu name="Estoque" url="estoque"/>
-            <ButtonAsideMenu name="Saude financeira" url="/"/>
+            <ButtonAsideMenu name="Saude financeira" url="homepage"/>
             <ButtonAsideMenu name="Cadastrar Produtos" url="cadprodutos"/>
-            <ButtonAsideMenu name="Cadastrar Comprador" url="/"/>
-            <ButtonAsideMenu name="Cadastrar Fornecedor" url="/"/>
-            <ButtonAsideMenu name="Lista de clientes" url="/"/>
-            <ButtonAsideMenu name="Lista de fornecedores" url="/"/>
+            <ButtonAsideMenu name="Cadastrar Comprador" url="homepage"/>
+            <ButtonAsideMenu name="Cadastrar Fornecedor" url="homepage"/>
+            <ButtonAsideMenu name="Lista de clientes" url="homepage"/>
+            <ButtonAsideMenu name="Lista de fornecedores" url="homepage"/>
 
         </div>
     )
