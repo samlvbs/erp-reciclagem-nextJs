@@ -1,5 +1,5 @@
 <h1>Projeto Next ERP Reciclagem </h1>
-<h2> <a href:"https://erp-next-bice.vercel.app/user/homepage">erp-next-bice.vercel.app</a></h2>
+<h2>[Deploy na vercel](https://erp-next-bice.vercel.app/user/homepage)</h2>
 <strong>instalação</strong> - <br>
 npm install next@latest<br>
 npm install -D tailwindcss<br>
